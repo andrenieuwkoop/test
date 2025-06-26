@@ -91,13 +91,13 @@ function App() {
       <header className="flex flex-col items-center mb-8">
         <div className="flex items-center gap-4">
           <img src="/images/logo-minjusv.png" alt="Logo MinJ&V" className="h-20" />
-          <h1 className="text-3xl font-bold text-gray-900">📋 Inspectie Webapp</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Inspectie Webapp</h1>
         </div>
         <nav className="mt-4 flex gap-4 flex-wrap justify-center">
-          <button className="text-sm text-blue-700 underline" onClick={() => setView("home")}>🏠 Home</button>
-          <button className="text-sm text-blue-700 underline" onClick={() => setView("newChecklist")}>➕ Nieuwe checklist</button>
-          <button className="text-sm text-blue-700 underline" onClick={() => setView("list")}>📄 Inspecties</button>
-          <button className="text-sm text-blue-700 underline" onClick={() => setView("dashboard")}>📊 Dashboard</button>
+          <button className="text-sm text-blue-700 underline" onClick={() => setView("home")}>Home</button>
+          <button className="text-sm text-blue-700 underline" onClick={() => setView("newChecklist")}>Nieuwe checklist</button>
+          <button className="text-sm text-blue-700 underline" onClick={() => setView("list")}>Inspecties</button>
+          <button className="text-sm text-blue-700 underline" onClick={() => setView("dashboard")}>Dashboard</button>
         </nav>
       </header>
 
@@ -105,16 +105,16 @@ function App() {
         <div className="text-center space-y-6">
           <p className="text-lg text-gray-700">Welkom bij de Inspectie Webapp van het Ministerie van Justitie en Veiligheid.</p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <button className="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("newChecklist")}>➕ Nieuwe checklist</button>
-            <button className="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("list")}>📄 Inspecties</button>
-            <button className="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("dashboard")}>📊 Dashboard</button>
+            <button className="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("newChecklist")}>Nieuwe checklist</button>
+            <button className="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("list")}>Inspecties</button>
+            <button className="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-xl shadow" onClick={() => setView("dashboard")}>Dashboard</button>
           </div>
         </div>
       )}
 
       {view === "newChecklist" && (
         <div className="space-y-6 bg-white p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-semibold">🛠️ Nieuwe Checklist Aanmaken</h2>
+          <h2 className="text-2xl font-semibold">Nieuwe Checklist Aanmaken</h2>
           <div>
             <label className="block font-medium mb-1">Naam van de checklist</label>
             <input type="text" className="border px-2 py-1 w-full rounded" value={newChecklistName} onChange={(e) => setNewChecklistName(e.target.value)} />
@@ -147,18 +147,18 @@ function App() {
                   const updated = [...newQuestions];
                   updated[idx].options.push({ text: "", color: "" });
                   setNewQuestions(updated);
-                }}>+ Voeg antwoord toe</button>
+                }}>Voeg antwoord toe</button>
               </div>
             ))}
-            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded shadow" onClick={() => setNewQuestions([...newQuestions, { question: "", options: [{ text: "", color: "" }] }])}>+ Voeg vraag toe</button>
+            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded shadow" onClick={() => setNewQuestions([...newQuestions, { question: "", options: [{ text: "", color: "" }] }])}>Voeg vraag toe</button>
           </div>
-          <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded shadow" onClick={handleChecklistSubmit}>✔️ Checklist opslaan</button>
+          <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded shadow" onClick={handleChecklistSubmit}>Checklist opslaan</button>
         </div>
       )}
 
       {view === "form" && currentChecklist && (
         <div className="space-y-6 bg-white p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-semibold">📝 Inspectieformulier: {currentChecklist.name}</h2>
+          <h2 className="text-2xl font-semibold">Inspectieformulier: {currentChecklist.name}</h2>
           {formResponses.map((res, idx) => (
             <div key={idx} className="border p-4 rounded bg-gray-50 space-y-2">
               <label className="font-medium block">{res.question}</label>
@@ -170,19 +170,19 @@ function App() {
               <textarea className="w-full border rounded px-2 py-1 mt-2" placeholder="Opmerking (optioneel)" value={res.comment} onChange={(e) => handleCommentInput(idx, e.target.value)} />
             </div>
           ))}
-          <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded shadow" onClick={handleInspectionSubmit}>✅ Inspectie voltooien</button>
+          <button className="px-4 py-2 bg-green-600 text-white font-semibold rounded shadow" onClick={handleInspectionSubmit}>Inspectie voltooien</button>
         </div>
       )}
 
       {view === "list" && (
         <div className="space-y-6 bg-white p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-semibold">📄 Inspectiegeschiedenis</h2>
+          <h2 className="text-2xl font-semibold">Inspectiegeschiedenis</h2>
           {checklists.length > 0 ? (
             <>
               <h3 className="text-lg font-bold">Kies checklist om inspectie te starten</h3>
               <div className="flex flex-wrap gap-4">
                 {checklists.map((cl) => (
-                  <button key={cl.id} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow" onClick={() => startInspection(cl)}>▶️ {cl.name}</button>
+                  <button key={cl.id} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow" onClick={() => startInspection(cl)}>{cl.name}</button>
                 ))}
               </div>
             </>
@@ -192,7 +192,7 @@ function App() {
 
           {inspections.length > 0 ? (
             <div className="mt-6 space-y-4">
-              <h3 className="text-lg font-bold">🕓 Vorige inspecties</h3>
+              <h3 className="text-lg font-bold">Vorige inspecties</h3>
               {inspections.map((insp) => (
                 <div key={insp.id} className="border p-4 rounded bg-gray-50">
                   <div className="font-semibold">{insp.checklistName}</div>
@@ -216,7 +216,7 @@ function App() {
 
       {view === "dashboard" && (
         <div className="space-y-8 bg-white p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-semibold">📈 Managementdashboard</h2>
+          <h2 className="text-2xl font-semibold">Managementdashboard</h2>
           {Object.entries(getAnswerStats()).map(([question, answers], idx) => (
             <div key={idx} className="border p-4 rounded-xl bg-gray-50">
               <h3 className="text-lg font-bold mb-2">{question}</h3>
